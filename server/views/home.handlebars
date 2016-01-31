@@ -1,0 +1,16 @@
+<script>
+      System.config({
+        packages: {        
+          'bin/app': {
+            format: 'register',
+            defaultExtension: 'js'
+          }
+        }
+      });
+
+      System.import('bin/app/home/home.boot')
+            .then(function(){
+              window_load(window, jquery);
+            }, console.error.bind(console));
+ </script>
+<home-comp>Loading....</home-comp>
