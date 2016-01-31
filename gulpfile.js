@@ -48,6 +48,7 @@ gulp.task('develop', function () {
   });
 });
 
+gulp.task('build', ['less', 'scripts']);
 gulp.task('default', [
   'less',
   'develop',
