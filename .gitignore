@@ -1,4 +1,4 @@
 node_modules/
-public/bin
+bin
 .sass-cache
 *.log
