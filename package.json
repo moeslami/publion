@@ -3,26 +3,28 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "lite": "lite-server",
-    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" "
+    "start": "gulp",
+    "build": "gulp build"
+  },
+  "engines": {
+    "node": "5.5.0"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.2",
-    "systemjs": "0.19.6",
     "es6-promise": "3.0.2",
     "es6-shim": "0.33.3",
-    "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.0",
-    "zone.js": "0.5.10",
     "gulp": "3.9.0",
-    "gulp-less": "3.0.1",
-    "gulp-livereload": "3.8.0",
-    "gulp-nodemon": "2.0.2",
-    "gulp-plumber": "1.0.0",
+    "gulp-inline-ng2-template": "0.0.10",
+    "gulp-less": "3.0.5",
+    "gulp-livereload": "3.8.1",
+    "gulp-nodemon": "2.0.6",
+    "gulp-plumber": "1.0.1",
     "gulp-typescript": "2.10.0",
     "merge2": "1.0.0",
-    "typescript": "1.7.3"
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.0",
+    "systemjs": "0.19.6",
+    "typescript": "1.7.5",
+    "zone.js": "0.5.10"
   }
 }

@@ -26,9 +26,6 @@ http://www.templatemo.com/tm-401-sprint
     <link rel="stylesheet" href="css/templatemo_misc.css">
     <link rel="stylesheet" href="css/templatemo_style.css">
     <link rel="stylesheet" href="css/site.css">
-    {{#if ENV_DEVELOPMENT}}
-    <script src="http://localhost:35729/livereload.js"></script>
-    {{/if}}
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>  
     <script src="node_modules/es6-shim/es6-shim.min.js"></script>
     <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
@@ -58,9 +55,8 @@ http://www.templatemo.com/tm-401-sprint
 
       System.import('bin/app/home/home.boot')
             .then(function(){
-              window_load(window, jquery);
             }, console.error.bind(console));
  </script>
-<home-comp>Loading....</home-comp>
+<home>Loading....</home>
 </body>
 </html>
