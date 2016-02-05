@@ -1,358 +1,108 @@
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>Free Blueasy Bootstrap Website Template | Home :: w3layouts</title>
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<link href="css/style.css" rel='stylesheet' type='text/css' />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,800' rel='stylesheet' type='text/css'>
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<script src="js/jquery-1.9.1.min.js"></script>
-<!--hover-effect-->
-<script src="js/hover_pack.js"></script>
-<script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
-	<script type="text/javascript">
-	$(function () {
-		
-		var filterList = {
-		
-			init: function () {
-			
-				// MixItUp plugin
-				// http://mixitup.io
-				$('#portfoliolist').mixitup({
-					targetSelector: '.portfolio',
-					filterSelector: '.filter',
-					effects: ['fade'],
-					easing: 'snap',
-					// call the hover effect
-					onMixEnd: filterList.hoverEffect()
-				});				
-			
-			},
-			
-			hoverEffect: function () {
-			
-				// Simple parallax effect
-				$('#portfoliolist .portfolio').hover(
-					function () {
-						$(this).find('.label').stop().animate({bottom: 0}, 200, 'easeOutQuad');
-						$(this).find('img').stop().animate({top: -30}, 500, 'easeOutQuad');				
-					},
-					function () {
-						$(this).find('.label').stop().animate({bottom: -40}, 200, 'easeInQuad');
-						$(this).find('img').stop().animate({top: 0}, 300, 'easeOutQuad');								
-					}		
-				);				
-			
-			}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Open Door!</title>
+		<meta name="description" content="">
+		<!-- Bootstrap Core CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- Custom Fonts -->
+		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="css/site.css" >
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+			<![endif]-->
+		<script src="node_modules/es6-shim/es6-shim.min.js"></script>
+	    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+	
+	    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+	    <script src="node_modules/systemjs/dist/system.src.js"></script>
+	    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+	    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+	</head>
 
-		};
-		
-		// Run the show!
-		filterList.init();
-		
-		
-	});	
-	</script>
-</head>
-<body>
-	<!--start header-->
-	<div class="header">
-	  <div class="header-top">
-		<div class="container">
-			<div class="logo">
-			  <a href="index.html"><img src="images/logo.png" alt=""/></a>
-			</div>
-			<div class="menu">
-			  <a class="toggleMenu" href="#"><img src="images/nav_icon.png" alt="" /></a>
-				<ul class="nav" id="nav">
-				   <li><a href="#home" class="scroll">Home</a></li>
-				   <li><a href="#services" class="scroll">Services</a></li>
-				   <li><a href="#features" class="scroll">Features</a></li>
-				   	<li><a href="#portfolio" class="scroll">Portfolio</a></li>
-				   <li><a href="#contact" class="scroll">Contact</a></li>								
-				   <div class="clear"></div>
-			    </ul>
-			</div>							
-	        <div class="clear"></div>
-	        <script type="text/javascript" src="js/responsive-nav.js"></script>
-			<script type="text/javascript" src="js/move-top.js"></script>
-			<script type="text/javascript" src="js/easing.js"></script>
-			   <script type="text/javascript">
-					jQuery(document).ready(function($) {
-						$(".scroll").click(function(event){		
-							event.preventDefault();
-							$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
-						});
-					});
-				</script>
-		   </div>
-		 </div>
-		 <div class="header-bottom" id="home">
-		   <h1>"I'm Looking for the unexpected.</h1>
-		   <h2>I'm Looking for things I've never seen before."</h2>
-		 </div>
-	</div>
-	<!--end header-->
-	<!--start services-->
-	<div class="services" id="services">
-		<div class="container">
-			<div class="row">
-				<h3 class="m_3">Services</h3>
-				<div class="m_4"><span class="bottom_line"> </span></div>
-				<div class="col-md-3 top_grid">
-					<i class="coffee"> </i>
-					<h3 class="m_1">Coffee</h3>
-					<p class="m_2">Lorem ipsum dolor sit amet adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat..</p>
-				</div>
-				<div class="col-md-3 top_grid">
-					<i class="instant"> </i>
-					<h3 class="m_1">Instant</h3>
-					<p class="m_2">Lorem ipsum dolor sit amet adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat..</p>
-				</div>
-				<div class="col-md-3 top_grid">
-					<i class="advisor"> </i>
-					<h3 class="m_1">Serious</h3>
-					<p class="m_2">Lorem ipsum dolor sit amet adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat..</p>
-				</div>
-				<div class="col-md-3 top_grid1">
-					<i class="frame"> </i>
-					<h3 class="m_1">Frame</h3>
-					<p class="m_2">Lorem ipsum dolor sit amet adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat..</p>
-				</div>
-			</div>
-		</div>
-	 </div>
-	 <!--end services-->
-	 <!--start portfolio-->
-	 <div class="Portfolio1" id="portfolio">
-		<div class="container"> 
-			    <div class="portfolio_top">
-					<div class="portfolio_left">
-					  <h3 class="m_5">Portfolio</h3>
-					  <div class="m_6"><span class="portfolio_line"> </span></div>
-					</div>
-					<ul id="filters" class="clearfix">
-						<li><span class="filter active" data-filter="app card icon logo web">All</span></li>
-						<li><span class="filter" data-filter="app">Panoramas</span></li>
-						<li><span class="filter" data-filter="card">Portraits</span></li>
-						<li><span class="filter" data-filter="icon">Macro</span></li>
-						<li><span class="filter" data-filter="logo">Journal</span></li>
-					</ul>
-				    <div class="clear"></div>
-			    </div>
-				<div id="portfoliolist">
-					<div class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
-						<div class="portfolio-wrapper">		
-							<a href="single.html" class="b-link-stripe b-animate-go  thickbox">
-						     <img src="images/p1.jpg" /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt=""/></h2>
-						  	</div></a>
-						</div>
-					</div>				
-					<div class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
-						<div class="portfolio-wrapper">		
-							<a href="single.html" class="b-link-stripe b-animate-go  thickbox">
-						     <img src="images/p2.jpg" /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt=""/></h2>
-						     </div></a>
-		                </div>
-					</div>		
-					<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
-						<div class="portfolio-wrapper">		
-							<a href="single.html" class="b-link-stripe b-animate-go  thickbox">
-						     <img src="images/p3.jpg" /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt=""/></h2>
-						  </div></a>
-		                </div>
-					</div>				
-					<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
-						<div class="portfolio-wrapper">		
-							<a href="single.html" class="b-link-stripe b-animate-go  thickbox">
-						     <img src="images/p4.jpg" /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt=""/></h2>
-						  	 </div></a>
-		                </div>
-					</div>	
-					<div class="portfolio icon mix_all" data-cat="icon" style="display: inline-block; opacity: 1;">
-						<div class="portfolio-wrapper">		
-							<a href="single.html" class="b-link-stripe b-animate-go  thickbox">
-						     <img src="images/p5.jpg" /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt=""/></h2>
-						  	 </div></a>
-		                </div>
-					</div>			
-					<div class="portfolio icon mix_all" data-cat="icon" style="display: inline-block; opacity: 1;">
-						<div class="portfolio-wrapper">		
-							<a href="single.html" class="b-link-stripe b-animate-go  thickbox">
-						     <img src="images/p6.jpg" /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt=""/></h2>
-						  	 </div></a>
-		                </div>
-					</div>	
-					<div class="portfolio logo mix_all" data-cat="logo" style="display: inline-block; opacity: 1;">
-						<div class="portfolio-wrapper">		
-							<a href="single.html" class="b-link-stripe b-animate-go  thickbox">
-						     <img src="images/p7.jpg" /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt=""/></h2>
-						  	 </div></a>
-		                </div>
-					</div>	
-					<div class="portfolio logo mix_all" data-cat="logo" style="display: inline-block; opacity: 1;">
-						<div class="portfolio-wrapper">		
-							<a href="single.html" class="b-link-stripe b-animate-go  thickbox">
-						     <img src="images/p8.jpg" /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt=""/></h2>
-						  	 </div></a>
-		                </div>
-					</div>																																							
-				</div>
-		  </div><!-- container -->
-	   </div>
-	   <!--end portfolio-->
-	   <!--start default-->
-	   <div class="default" id="features">
-	   	<div class="container">
-	   	  <div class="row">
-	   		<div class="col-md-6 default_top">
-	   			<h3 class="m_21">Just Default Section</h3>
-				<div class="m_22"><span class="default_line"> </span></div>
-				<p class="m_7">aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie </p>
-				<p class="m_7">aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie </p>
-				<div class="button"><a href="#">Visit Me</a></div>
-	   		</div>
-	   		<div class="col-md-6 video_player">
-	   			<iframe src="//player.vimeo.com/video/1785993?color=ffffff" width="100%" height="350" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/1785993"></a> <a href="http://vimeo.com/keithloutit"></a> <a href="https://vimeo.com"></a>.</p>
-	   		</div>
-	   	  </div>
-	   	</div>
-	   </div>
-	   <!--end default-->
-	   <!--start twitter-->
-	   <div class="twitter">
-	   	<div class="container">
-	   	  <div class="twitter_left">
-	   		<h3 class="m_21">Just Default Section</h3>
-				<div class="m_22"><span class="default_line"> </span></div>
-	   	  </div>
-	   	  <i class="icon_twitter"> </i>
-	   	  <div class="clear"></div>
-	   	  <p class="m_9">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-	   	</div>
-	  </div>
-	  <!--end twitter-->
-	  <!--start join-->
-	  <div class="join">
-	  	<div class="container">
-	  		<div class="row">
-	  			<h3 class="m_3">Who is Jphn Doe?</h3>
-				  <div class="m_4"><span class="bottom_line"> </span></div>
-	  			<div class="col-md-6 join_left">
-	  			  <p class="m_10">aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie </p>
-				  <p class="m_11">aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie </p>
-	  			</div>
-	  			<div class="col-md-6">
-	  			  <p class="m_10">aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie </p>
-	  			  <ul class="social">	
-					  <li class="twt"><a href="#"><span> </span></a></li>
-					  <li class="google"><a href="#"><span> </span></a></li>
-					  <li class="dribble"><a href="#"><span> </span></a></li>		
-					  <li class="coffee"><a href="#"><span> </span></a></li>
-				   </ul>
-			    </div>
-	  		</div>
-	  	</div>
-	  </div>
-	  <!--end join-->
-	  <!--start testimonials-->
-	  <div class="testimonials">
-	  	<div class="container">
-	  		<div class="portfolio_left">
-				<h3 class="m_5">Testimonials</h3>
-				<div class="m_6"><span class="portfolio_line"> </span></div>
-			</div>
-			<i class="quotation"> </i>
-			<div class="clear"> </div>
-			<p class="m_12">aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit</p>
-			<span class="m_13">-quis nostrud volutpat</span>
-	  	</div>
-	  </div>
-	  <!--end testimonials-->
-	  <!--start contact-->
-	  <div class="contact" id="contact">
-	  	<div class="container">
-	  		<div class="row">
-	  			<h3 class="m_3">Contact</h3>
-	  			<div class="m_4"><span class="bottom_line"> </span></div>
-				  <form method="post" action="contact-post.html">
-					<div class="col-md-6 commentform">
-					  <p class="comment-form-author"><label for="author">Name</label>
-						<input id="author" name="author" type="text" value="" size="30" aria-required="true">
-					  </p>
-					   <p><label for="author">Email</label>
-						<input id="author" name="author" type="text" value="" size="30" aria-required="true">
-					  </p>
-					</div>
-					<div class="col-md-6 commentform_desc">
-						<p class="m_13">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea.</p>
-	                   <div class="address">
-				         <p>500 Lorem Ipsum Dolor Sit,</p>
-						 <p>Phone:(00) 222 666 444</p>
-				   		<p>Fax: (000) 000 00 00 0</p>
-				 	 	<p>Email: <span>support[at]snow.com</span></p>
-				   		<p>Follow on: <span>Facebook</span>, <span>Twitter</span></p>
-				        </div>
-	                 </div>
-	                 <div class="clear"></div>
-	                 <div class="contactform_bottom">
-					   <span><label>Subject</label></span>
-					   <span><textarea name="userMsg"> </textarea></span>
-					   <input name="submit" type="submit" id="submit" value="Message">
-				     </div>
-				     <div class="col-md-6 commentform_desc1">
-						<p class="m_13">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea.</p>
-	                   <div class="address">
-				         <p>500 Lorem Ipsum Dolor Sit,</p>
-						 <p>Phone:(00) 222 666 444</p>
-				   		<p>Fax: (000) 000 00 00 0</p>
-				 	 	<p>Email: <span>support[at]snow.com</span></p>
-				   		<p>Follow on: <span>Facebook</span>, <span>Twitter</span></p>
-				        </div>
-	                 </div>
-					</form>
-			     </div>
-	  	   </div>
-	  </div>
-	  <div class="footer-bottom">
-	  	<div class="container">
-	  		<ul class="footer-nav">
-	  			<li><a href="#">Home</a></li> |
-	  			<li><a href="#">Services</a></li> |
-	  			<li><a href="#">Portfolio</a></li> |
-	  			<li><a href="#">Contact</a></li> 
-	  		</ul>
-	  		<div class="copy">
-			    <p>© 2014 Template by <a href="http://w3layouts.com" target="_blank">w3layouts</a></p>
-		    </div>
-		    <div class="clear"></div>
-	  	</div>
-	  </div>
-	  <!--end contact-->
-      <script type="text/javascript">
-			$(document).ready(function() {
-			
-				var defaults = {
-		  			containerID: 'toTop', // fading element id
-					containerHoverID: 'toTopHover', // fading element hover id
-					scrollSpeed: 1200,
-					easingType: 'linear' 
-		 		};
-				
-				
-				$().UItoTop({ easingType: 'easeOutQuart' });
-				
+	<body data-spy="scroll">
+<script>
+      System.config({
+        packages: {        
+          'bin/app': {
+            format: 'register',
+            defaultExtension: 'js'
+          }
+        }
+      });
+
+      System.import('bin/app/home/home.boot')
+            .then(function(){
+            }, console.error.bind(console));
+ </script>
+	<home>Loading...</home>
+
+	<!-- jQuery -->
+	<script src="js/jquery.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- Portfolio -->
+	<script src="js/jquery.quicksand.js"></script>	  
+
+	<!--Jquery Smooth Scrolling-->
+	<script>
+		$(document).ready(function(){
+			$('.custom-menu a[href^="#"], .intro-scroller .inner-link').on('click',function (e) {
+				e.preventDefault();
+
+				var target = this.hash;
+				var $target = $(target);
+
+				$('html, body').stop().animate({
+					'scrollTop': $target.offset().top
+				}, 900, 'swing', function () {
+					window.location.hash = target;
+				});
 			});
-		</script>
-        <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+
+			$('a.page-scroll').bind('click', function(event) {
+				var $anchor = $(this);
+				$('html, body').stop().animate({
+					scrollTop: $($anchor.attr('href')).offset().top
+				}, 1500, 'easeInOutExpo');
+				event.preventDefault();
+			});
+
+		   $(".nav a").on("click", function(){
+				 $(".nav").find(".active").removeClass("active");
+				$(this).parent().addClass("active");
+			});
+
+			$('body').append('<div id="toTop" class="btn btn-primary color1"><span class="glyphicon glyphicon-chevron-up"></span></div>');
+				$(window).scroll(function () {
+					if ($(this).scrollTop() != 0) {
+						$('#toTop').fadeIn();
+					} else {
+						$('#toTop').fadeOut();
+					}
+				}); 
+			$('#toTop').click(function(){
+				$("html, body").animate({ scrollTop: 0 }, 700);
+				return false;
+			});
+
+		});
+
+	</script>
+
 </body>
 </html>
+
+
+
+

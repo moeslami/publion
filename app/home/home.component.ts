@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {SiteHeader} from './siteheader.component'
+import {TopNavComponent} from '../shared/topnav.component'
 
 interface Hero{
 	id: number;
@@ -8,10 +8,10 @@ interface Hero{
 @Component({
     selector: 'home',
     templateUrl: 'home/home.component.html',
-    directives: [SiteHeader]
+    directives: [TopNavComponent]
 })
 export class HomeComponent { 
-	public title = 'Tour of Heroes...';
+	public loginTitle = 'Welcome Mohammad!';
 	public hero: Hero = {
 		id: 1,
 		name: 'Windstorm'
