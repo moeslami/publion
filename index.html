@@ -20,39 +20,39 @@
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 			<![endif]-->
-		<script src="node_modules/es6-shim/es6-shim.min.js"></script>
-	    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+		<script src="lib/es6-shim.min.js"></script>
+	    <script src="lib/system-polyfills.js"></script>
 	
-	    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-	    <script src="node_modules/systemjs/dist/system.src.js"></script>
-	    <script src="node_modules/rxjs/bundles/Rx.js"></script>
-	    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+	    <script src="lib/angular2-polyfills.js"></script>
+	    <script src="lib/system.src.js"></script>
+	    <script src="lib/Rx.js"></script>
+	    <script src="lib/angular2.dev.js"></script>
 	</head>
 
 	<body data-spy="scroll">
 <script>
       System.config({
         packages: {        
-          'bin/app': {
+          'bin': {
             format: 'register',
             defaultExtension: 'js'
           }
         }
       });
 
-      System.import('bin/app/home/home.boot')
+      System.import('bin/home/home.boot')
             .then(function(){
             }, console.error.bind(console));
  </script>
 	<home>Loading...!</home>
 
 	<!-- jQuery -->
-	<script src="js/jquery.js"></script>
+	<script src="lib/jquery.js"></script>
 	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="lib/bootstrap.min.js"></script>
 
 	<!-- Portfolio -->
-	<script src="js/jquery.quicksand.js"></script>	  
+	<script src="lib/jquery.quicksand.js"></script>	  
 
 	<!--Jquery Smooth Scrolling-->
 	<script>

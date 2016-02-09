@@ -11,9 +11,5 @@ interface Hero{
     directives: [TopNavComponent]
 })
 export class HomeComponent { 
-	public loginTitle = 'Welcome Mohammad!';
-	public hero: Hero = {
-		id: 1,
-		name: 'Windstorm'
-	}
+	
 }

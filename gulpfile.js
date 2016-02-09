@@ -5,9 +5,10 @@ var gulp = require('gulp'),
   less = require('gulp-less'),
   ts = require('gulp-typescript'),
   merge = require('merge2'),
-  inlineNg2Template = require('gulp-inline-ng2-template');
+  inlineNg2Template = require('gulp-inline-ng2-template'),
+  ghPages = require('gulp-gh-pages');
 
-gulp.task('less', function () {
+gulp.task('build-less', function () {
   gulp.src('./css/*.less')
     .pipe(plumber())
     .pipe(less())
@@ -17,7 +18,7 @@ gulp.task('less', function () {
 
 var tsProject = ts.createProject('tsconfig.json');
 
-gulp.task('scripts', function() {
+gulp.task('build-app', function() {
 var tsResult = gulp.src('app/**/*.ts')
 .pipe(inlineNg2Template(
   {
@@ -31,9 +32,41 @@ var tsResult = gulp.src('app/**/*.ts')
  
 return merge([ // Merge the two output streams, so this task is finished when the IO of both operations are done. 
   tsResult.dts.pipe(gulp.dest('bin/definitions')),
-  tsResult.js.pipe(gulp.dest('bin/app'))
+  tsResult.js.pipe(gulp.dest('bin'))
   ]).pipe(livereload());
 });
+
+gulp.task('build-lib', function(){
+  return gulp.src([
+    'node_modules/es6-shim/es6-shim.min.js',
+    'node_modules/systemjs/dist/system-polyfills.js',
+    'node_modules/angular2/bundles/angular2-polyfills.js',
+    'node_modules/systemjs/dist/system.src.js',
+    'node_modules/rxjs/bundles/Rx.js',
+    'node_modules/angular2/bundles/angular2.dev.js',
+    'js/*.js'
+    ])
+    .pipe(gulp.dest('lib'));
+});
+
+gulp.task('predeploy', ['build'], function(){
+  return gulp.src([
+    'css/**',
+    'font-awesome/**',
+    'fonts/**',
+    'images/**',
+    'lib/**',
+    'bin/**',
+    'index.html'
+    ], {"base": "."})
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('deploy', function(){
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
+});
+
 
 gulp.task('watch', ['less', 'scripts'], function() {
   gulp.watch('./css/*.less', ['less']);
@@ -57,9 +90,11 @@ gulp.task('develop', function () {
   // });
 });
 gulp.task('build', [
-  'less',
-  'scripts'
+  'build-less',
+  'build-app',
+  'build-lib'
 ]);
+
 gulp.task('default', [
   'develop',
   'watch'
