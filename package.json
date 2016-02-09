@@ -5,7 +5,6 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp build",
-    "predeploy": "gulp predeploy",
     "deploy": "gulp deploy"
   },
   "engines": {

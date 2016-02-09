@@ -7,7 +7,7 @@ declare var $: any;
     templateUrl: 'shared/topnav.component.html'
 })
 export class TopNavComponent implements OnInit {
-	public loginTitle = 'Welcome!!!';
+	public loginTitle = 'Welcome Mohammad!';
 
 	ngOnInit() {
 		$('.custom-menu a[href^="#"], .intro-scroller .inner-link').on('click', function(e) {

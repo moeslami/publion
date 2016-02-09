@@ -49,7 +49,20 @@ gulp.task('build-lib', function(){
     .pipe(gulp.dest('lib'));
 });
 
-gulp.task('predeploy', ['build'], function(){
+// gulp.task('predeploy', ['build'], function(){
+//   return gulp.src([
+//     'css/**',
+//     'font-awesome/**',
+//     'fonts/**',
+//     'images/**',
+//     'lib/**',
+//     'bin/**',
+//     'index.html'
+//     ], {"base": "."})
+//     .pipe(gulp.dest('dist'));
+// });
+
+gulp.task('deploy', ['build'], function(){
   return gulp.src([
     'css/**',
     'font-awesome/**',
@@ -59,12 +72,7 @@ gulp.task('predeploy', ['build'], function(){
     'bin/**',
     'index.html'
     ], {"base": "."})
-    .pipe(gulp.dest('dist'));
-});
-
-gulp.task('deploy', function(){
-  return gulp.src('./dist/**/*')
-    .pipe(ghPages());
+    .pipe(ghPages({force: true}));
 });
 
 
