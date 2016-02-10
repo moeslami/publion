@@ -36,7 +36,7 @@ return merge([ // Merge the two output streams, so this task is finished when th
   ]).pipe(livereload());
 });
 
-gulp.task('build-lib', function(){
+gulp.task('copy-lib', function(){
   return gulp.src([
     'node_modules/es6-shim/es6-shim.min.js',
     'node_modules/systemjs/dist/system-polyfills.js',
@@ -44,25 +44,17 @@ gulp.task('build-lib', function(){
     'node_modules/systemjs/dist/system.src.js',
     'node_modules/rxjs/bundles/Rx.js',
     'node_modules/angular2/bundles/angular2.dev.js',
-    'js/*.js'
+    'node_modules/bootstrap/dist/css/bootstrap.min.css',
+    'node_modules/bootstrap/dist/js/bootstrap.min.js',
+    'js/jquery.quicksand.js',
+    'node_modules/jquery/dist/jquery.min.js'
+
+    //'js/*.js'
     ])
     .pipe(gulp.dest('lib'));
 });
 
-// gulp.task('predeploy', ['build'], function(){
-//   return gulp.src([
-//     'css/**',
-//     'font-awesome/**',
-//     'fonts/**',
-//     'images/**',
-//     'lib/**',
-//     'bin/**',
-//     'index.html'
-//     ], {"base": "."})
-//     .pipe(gulp.dest('dist'));
-// });
-
-gulp.task('deploy', ['build'], function(){
+gulp.task('deploy', ['build', 'copy-lib'], function(){
   return gulp.src([
     'css/**',
     'font-awesome/**',
@@ -70,15 +62,16 @@ gulp.task('deploy', ['build'], function(){
     'images/**',
     'lib/**',
     'bin/**',
+    'dashboard/**',
     'index.html'
     ], {"base": "."})
     .pipe(ghPages({force: true}));
 });
 
 
-gulp.task('watch', ['less', 'scripts'], function() {
-  gulp.watch('./css/*.less', ['less']);
-  gulp.watch('./app/**/*.ts', ['scripts']);
+gulp.task('watch', ['build', 'copy-lib'], function() {
+  gulp.watch('./css/*.less', ['build-less']);
+  gulp.watch('./app/**/*', ['build-app']);
 });
 
 gulp.task('develop', function () {
@@ -99,8 +92,7 @@ gulp.task('develop', function () {
 });
 gulp.task('build', [
   'build-less',
-  'build-app',
-  'build-lib'
+  'build-app'
 ]);
 
 gulp.task('default', [

@@ -1,10 +1,12 @@
 import {Component, OnInit} from 'angular2/core';
+import {LoginModalComponent} from './loginmodal.component'
 
 declare var $: any;
 
 @Component({
     selector: 'top-nav',
-    templateUrl: 'shared/topnav.component.html'
+    templateUrl: 'shared/topnav.component.html',
+    directives: [LoginModalComponent]
 })
 export class TopNavComponent implements OnInit {
 	public loginTitle = 'Welcome Mohammad!';
