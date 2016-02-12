@@ -1,78 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="">
-		<meta name="author" content="">
-		<title>Open Door!</title>
-		<meta name="description" content="">
-		<!-- Bootstrap Core CSS -->
-		<link href="lib/bootstrap.min.css" rel="stylesheet">
-		<!-- Custom Fonts -->
-		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<!-- Custom CSS -->
-		<link rel="stylesheet" href="css/site.css" >
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-			<![endif]-->
-		<script src="lib/es6-shim.min.js"></script>
-	    <script src="lib/system-polyfills.js"></script>
-	
-	    <script src="lib/angular2-polyfills.js"></script>
-	    <script src="lib/system.src.js"></script>
-	    <script src="lib/Rx.js"></script>
-	    <script src="lib/angular2.dev.js"></script>
-	</head>
 
-	<body data-spy="scroll">
-<script>
-      System.config({
-        packages: {        
-          'bin': {
-            format: 'register',
-            defaultExtension: 'js'
-          }
-        }
-      });
-
-      System.import('bin/home/home.boot')
-            .then(function(){
-            }, console.error.bind(console));
- </script>
-	<home>
-		<h3>Please wait...</h3>
-	</home>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Open Door!</title>
+	<meta name="description" content="">
 
 	<!-- jQuery -->
 	<script src="lib/jquery.min.js"></script>
-	<!-- Bootstrap Core JavaScript -->
-	<script src="lib/ng2-bootstrap.js"></script>
-	
+
+	<!-- Bootstrap Core CSS -->
+	<link href="lib/bootstrap.min.css" rel="stylesheet">
+	<script src="lib/bootstrap.min.js"></script>
 
 	<!-- Portfolio -->
-	<script src="lib/jquery.quicksand.js"></script>	  
+	<script src="lib/jquery.quicksand.js"></script>
+	<!-- Custom Fonts -->
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/site.css">
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+			<![endif]-->
+	<script src="lib/es6-shim.min.js"></script>
+	<script src="lib/system-polyfills.js"></script>
 
+	<script src="lib/angular2-polyfills.js"></script>
+	<script src="lib/system.src.js"></script>
+	<script src="lib/Rx.js"></script>
+	<script src="lib/angular2.dev.js"></script>
+	<script src="lib/moment.min.js"></script>
+</head>
+
+<body data-spy="scroll">
+	<script>
+		System.config({
+			packages: {
+				'bin': {
+					format: 'register',
+					defaultExtension: 'js'
+				}
+			},
+			map: {
+				moment: 'lib/moment.min.js'
+			}
+		});
+
+		System.import('bin/home/home.boot')
+			.then(function() {}, console.error.bind(console));
+	</script>
+	<home>
+		<div class="orangeback" style="width:100%;height:100%;padding-top:25%;padding-left:40%">
+			<h1 style="color:white">Open Door!</h1>
+		</div>
+	</home>
+	<script src="lib/ng2-bootstrap.min.js"></script>
 	<!--Jquery Smooth Scrolling-->
 	<script>
-		$(document).ready(function(){
-			// $('.custom-menu a[href^="#"], .intro-scroller .inner-link')
-			// .on('click',function (e) {
-			// 	e.preventDefault();
-
-			// 	var target = this.hash;
-			// 	var $target = $(target);
-
-			// 	$('html, body').stop().animate({
-			// 		'scrollTop': $target.offset().top
-			// 	}, 900, 'swing', function () {
-			// 		window.location.hash = target;
-			// 	});
-			// });
+		$(document).ready(function() {
 
 			$('a.page-scroll').bind('click', function(event) {
 				var $anchor = $(this);
@@ -82,31 +74,25 @@
 				event.preventDefault();
 			});
 
-		 //   $(".nav a").on("click", function(){
-			// 	 $(".nav").find(".active").removeClass("active");
-			// 	$(this).parent().addClass("active");
-			// });
-
 			$('body').append('<div id="toTop" class="btn btn-primary color1"><span class="glyphicon glyphicon-chevron-up"></span></div>');
-				$(window).scroll(function () {
-					if ($(this).scrollTop() != 0) {
-						$('#toTop').fadeIn();
-					} else {
-						$('#toTop').fadeOut();
-					}
-				}); 
-			$('#toTop').click(function(){
-				$("html, body").animate({ scrollTop: 0 }, 700);
+			$(window).scroll(function() {
+				if ($(this).scrollTop() != 0) {
+					$('#toTop').fadeIn();
+				}
+				else {
+					$('#toTop').fadeOut();
+				}
+			});
+			$('#toTop').click(function() {
+				$("html, body").animate({
+					scrollTop: 0
+				}, 700);
 				return false;
 			});
 
 		});
-
 	</script>
 
 </body>
+
 </html>
-
-
-
-

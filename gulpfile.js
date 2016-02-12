@@ -45,9 +45,11 @@ gulp.task('copy-lib', function(){
     'node_modules/rxjs/bundles/Rx.js',
     'node_modules/angular2/bundles/angular2.dev.js',
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
-    'node_modules/ng2-bootstrap/ng2-bootstrap.js',
+    'node_modules/bootstrap/dist/js/bootstrap.min.js',
+    'node_modules/ng2-bootstrap/bundles/ng2-bootstrap.min.js',
     'js/jquery.quicksand.js',
-    'node_modules/jquery/dist/jquery.min.js'
+    'node_modules/jquery/dist/jquery.min.js',
+    'node_modules/moment/min/moment.min.js'
 
     //'js/*.js'
     ])
