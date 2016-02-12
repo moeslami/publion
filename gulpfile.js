@@ -76,21 +76,21 @@ gulp.task('watch', ['build', 'copy-lib'], function() {
   gulp.watch('./app/**/*', ['build-app']);
 });
 
-gulp.task('develop', function () {
+gulp.task('develop', ['watch'], function () {
   livereload.listen();
-  // nodemon({
-  //   script: '',
-  //   ext: 'js',
-  //   stdout: false
-  // }).on('readable', function () {
-  //   this.stdout.on('data', function (chunk) {
-  //     if(/^Express server listening on port/.test(chunk)){
-  //       livereload.changed(__dirname);
-  //     }
-  //   });
-  //   this.stdout.pipe(process.stdout);
-  //   this.stderr.pipe(process.stderr);
-  // });
+  nodemon({
+    script: 'server.js',
+    ext: 'js html',
+    stdout: false
+  }).on('readable', function () {
+    this.stdout.on('data', function (chunk) {
+      if(/^Express server listening on port/.test(chunk)){
+        livereload.changed(__dirname);
+      }
+    });
+    this.stdout.pipe(process.stdout);
+    this.stderr.pipe(process.stderr);
+  });
 });
 gulp.task('build', [
   'build-less',

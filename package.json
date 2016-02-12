@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "gulp",
+    "start": "gulp develop",
     "build": "gulp build",
     "deploy": "gulp deploy",
     "watch": "gulp watch"
@@ -16,14 +16,6 @@
     "bootstrap": "^3.3.6",
     "es6-promise": "3.0.2",
     "es6-shim": "0.33.3",
-    "gulp": "3.9.0",
-    "gulp-gh-pages": "^0.5.4",
-    "gulp-inline-ng2-template": "0.0.10",
-    "gulp-less": "3.0.5",
-    "gulp-livereload": "3.8.1",
-    "gulp-nodemon": "2.0.6",
-    "gulp-plumber": "1.0.1",
-    "gulp-typescript": "2.10.0",
     "jquery": "^2.2.0",
     "merge2": "1.0.0",
     "moment": "^2.11.2",
@@ -33,5 +25,18 @@
     "systemjs": "0.19.6",
     "typescript": "1.7.5",
     "zone.js": "0.5.10"
+  },
+  "devDependencies": {
+    "express": "^4.13.4",
+    "gulp": "3.9.0",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-inline-ng2-template": "0.0.10",
+    "gulp-less": "3.0.5",
+    "gulp-livereload": "3.8.1",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-plumber": "1.0.1",
+    "gulp-typescript": "2.10.0",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.3.0"
   }
 }
