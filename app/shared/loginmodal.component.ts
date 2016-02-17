@@ -8,16 +8,8 @@ import {TAB_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
     directives: [TAB_DIRECTIVES, CORE_DIRECTIVES]
 })
 
-enum tabs{
-	signin,
-	signup,
-	forgotpassword 
 
-}
 
 export class LoginModalComponent {
-
-	setActiveTab(tab:tabs){
-
-	}
+	
 }
