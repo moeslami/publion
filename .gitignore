@@ -1,7 +1,0 @@
-node_modules/
-bin
-.sass-cache
-*.log
-lib
-dist
-.publish
