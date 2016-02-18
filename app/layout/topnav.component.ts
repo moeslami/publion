@@ -1,5 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
-import {LoginModalComponent} from './loginmodal.component'
+import {LoginModalComponent} from '../login/loginmodal.component'
 
 declare var $: any;
 
