@@ -1,8 +1,7 @@
 import {Injectable}     from 'angular2/core';
 import {Http, Response} from 'angular2/http';
-import {Hero}           from './hero';
-import {Observable}     from 'rxjs/Observable';
 import {AppConstants} from '../common/constants';
+import 'rxjs/RX';
 
 @Injectable()
 export class LoginService {
@@ -15,7 +14,7 @@ export class LoginService {
 	
 	getPersons(){
 	    return this.http.get(this.personsUrl)
-	    .map(res => < Hero[] > res.json().data)
+	    .map(res => < any[] > res.json().data)
 	    .catch(this.handleError);
 	}
 	
@@ -25,4 +24,3 @@ export class LoginService {
 	}
 	
 }
-//https://angular.io/docs/ts/latest/guide/server-communication.html

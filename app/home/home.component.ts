@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {TopNavComponent} from '../shared/topnav.component'
+import {TopNavComponent} from '../layout/topnav.component'
 
 interface Hero{
 	id: number;

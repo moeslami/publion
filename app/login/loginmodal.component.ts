@@ -3,6 +3,7 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 import {TAB_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 import {AppConstants} from '../common/constants';
 import {Http, Response} from 'angular2/http';
+import {LoginService} fron './login.service'
 
 @Component({
     selector: 'login-modal',
@@ -12,7 +13,7 @@ import {Http, Response} from 'angular2/http';
 
 export class LoginModalComponent {
 	
-	constructor(private http: Http, private constants: AppConstants){
+	constructor(private http: Http, private constants: AppConstants, private loginService: LoginService){
 	    
 	}
 	
