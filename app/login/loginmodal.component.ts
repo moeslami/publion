@@ -2,32 +2,31 @@ import {Component, OnInit} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {TAB_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 import {AppConstants} from '../common/constants';
-import {Http, Response} from 'angular2/http';
-import {LoginService} fron './login.service'
+import {HTTP_PROVIDERS} from 'angular2/http';
+import {LoginService} from './login.service';
 
 @Component({
     selector: 'login-modal',
     templateUrl: 'login/loginmodal.component.html',
-    directives: [TAB_DIRECTIVES, CORE_DIRECTIVES]
+    directives: [TAB_DIRECTIVES, CORE_DIRECTIVES],
+    providers: [LoginService, HTTP_PROVIDERS, AppConstants]
 })
 
-export class LoginModalComponent {
+export class LoginModalComponent implements OnInit {
 	
-	constructor(private http: Http, private constants: AppConstants, private loginService: LoginService){
+	constructor(private loginService: LoginService){
 	    
 	}
-	
-	private personsUrl = constants.apiBaseUrl + '/persons';
-	
-	Persons: any[];
-	
+
+	ngOnInit() { 
+		this.getPersons(); 
+	}
+
 	getPersons(){
-	    return this.http.get(this.personsUrl)
-	    .map(res => <any[]> res.json().data)
-	    .catch(this.handleError);
+		this.loginService.getPersons()
+			.subscribe(p => this.persons = p);
 	}
 	
-	ngOnInit() {
-	    
-	}
+	persons:any[];
+	
 }
