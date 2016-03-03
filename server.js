@@ -20,7 +20,7 @@ router.get('/', function(req, res) {
   res.render('index');
 });
 
-var port = 3000;
-app.listen(port, function(){
-    console.log("listening at port " + port + " ..." );
+app.listen(3000, process.env.IP || "0.0.0.0", function(){
+  
+  console.log("Server listening at ", process.env.IP + ":3000");
 })
