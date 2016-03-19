@@ -19,14 +19,23 @@ export class LoginModalComponent implements OnInit {
 	}
 
 	ngOnInit() { 
-		this.getPersons(); 
+		
 	}
 
-	getPersons(){
-		this.loginService.getPersons()
-			.subscribe(p => this.persons = p);
+	// getUsers(){
+	// 	this.loginService.getUsers()
+	// 		.subscribe(users => this.users = users);
+	// }
+	
+	login(){
+		
 	}
 	
-	persons:any[];
+	register(){
+		this.loginService.registerUser(this.currentUser);
+	}
+	
+	users:any[];
+	currentUser:any = {};
 	
 }

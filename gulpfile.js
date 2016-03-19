@@ -50,7 +50,8 @@ gulp.task('copy-lib', function(){
     'js/jquery.quicksand.js',
     'node_modules/jquery/dist/jquery.min.js',
     'node_modules/moment/min/moment.min.js',
-    'node_modules/angular2/bundles/http.dev.js'
+    'node_modules/angular2/bundles/http.dev.js',
+    'node_modules/ng2-cookies/ng2-cookies.js'
 
     //'js/*.js'
     ])

@@ -1,5 +1,5 @@
 import {Injectable}     from 'angular2/core';
-import {Http, Response} from 'angular2/http';
+import {Http, Response, Headers} from 'angular2/http';
 import {AppConstants} from '../common/constants';
 import {Observable}     from 'rxjs/Observable';
 import 'rxjs/Rx';
@@ -8,17 +8,32 @@ import 'rxjs/Rx';
 export class LoginService {
 	
 	constructor(private http: Http, private appConstants: AppConstants){
+		
 	}
 	
-	private personsUrl = this.appConstants.BaseApiUrl + '/persons';
-	
-	getPersons(){
-	    return this.http.get(this.personsUrl)
-			.map(res => <any[]>res.json())
+	getUsers(){
+	    return this.http.get(this.appConstants.BaseApiUrl + '/users')
+			.map(res => <any[]> res.json())
 	    	.catch(this.handleError);
 	}
 	
+	registerUser(user){
+	
+		var headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		this.http.post(this.appConstants.BaseApiUrl + '/users', JSON.stringify(user), {
+			headers: headers
+		})
+		.map(res => <any> res.json())
+		.subscribe(
+			data => console.log(data + ' is returned from the server'),
+			err => console.error(err),
+			() => console.log('registration complete!')
+		);
+	}
+	
 	private handleError(error: Response){
+	debugger;
 		console.error(error);
     	return Observable.throw(error.json().error || 'Server error');
 	}	
