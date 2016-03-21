@@ -1,5 +1,6 @@
 import {Component, Input} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
+import {HttpService} from '../common/http.service';
 
 import {Modal, ModalDialogInstance, ICustomModal, ICustomModalComponent} from 'angular2-modal';
 
@@ -8,28 +9,39 @@ import {Modal, ModalDialogInstance, ICustomModal, ICustomModalComponent} from 'a
     directives: [CORE_DIRECTIVES],
     templateUrl: 'login/login.window.html',
 })
+
 export class LoginWindow implements ICustomModalComponent {
     
-    dialog: ModalDialogInstance;
+    // dialog: ModalDialogInstance;
 
-    public accessToken: string;
-    public errorMsg: string;
+    // public accessToken: string;
+    // public errorMsg: string;
 
-    constructor(dialog: ModalDialogInstance, modelContentData: ICustomModal) {
-        this.dialog = dialog;
-        this.accessToken = true;
+    constructor(private dialog: ModalDialogInstance, private http: HttpService) {
+        
     }
     
     login(){
-        this.accessToken = "token goes here";
+
+
+        var accessToken = "token goes here";
        
-        this.dialog.close();
+        this.dialog.close(accessToken);
     }
     
     signup(){
-        // register and then login automatically 
-         this.accessToken = "token goes here";
-        this.dialog.close();
+        this.http.post('users', false,)
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        this.http.post(this.appConstants.BaseApiUrl + '/users', JSON.stringify(user), {
+            headers: headers
+        })
+            .map(res => <any>res.json())
+            .subscribe(
+            data => console.log(data + ' is returned from the server'),
+            err => console.error(err),
+            () => console.log('registration complete!')
+            );
     }
     
     cancel(){

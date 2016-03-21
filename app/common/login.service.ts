@@ -11,6 +11,10 @@ export class LoginService {
 		
 	}
 	
+	promptForLogin(){
+
+	}
+	
 	getUsers(){
 	    return this.http.get(this.appConstants.BaseApiUrl + '/users')
 			.map(res => <any[]> res.json())
