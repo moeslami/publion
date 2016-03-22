@@ -3,6 +3,8 @@ import {HTTP_PROVIDERS} from 'angular2/http';
 import { Injectable} from 'angular2/core';
 import {Http, Response, Headers} from 'angular2/http';
 import {AuthService} from './auth.service';
+import {Observable}     from 'rxjs/Observable';
+import 'rxjs/Rx';
 
 @Injectable()
 export class HttpService{
@@ -10,9 +12,11 @@ export class HttpService{
     constructor(
         private http: Http, 
         private appConstants: AppConstants,
-        private authService: AuthService){}
+        private authService: AuthService){
+            
+        }
 
-    get(resource: string, anonymous: boolean = false){
+    get(resource: string, anonymous: boolean = false): Observable<Response>{
         
         return this.authenticateAndRun(anonymous, (accessToken: string = null) => { 
             var url = this.appConstants.BaseApiUrl + '/' + resource;
@@ -44,7 +48,7 @@ export class HttpService{
         
     }
 
-    private authenticateAndRun(anonymouse: boolean, callback): string{
+    private authenticateAndRun(anonymouse: boolean, callback): Observable<Response> {
         if (anonymouse)
             callback();
 
