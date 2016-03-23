@@ -6,6 +6,10 @@ import {AuthService} from './auth.service';
 import {Observable}     from 'rxjs/Observable';
 import 'rxjs/Rx';
 
+interface HttpCall{
+    (accessToken: string): Observable<Response>
+}
+
 @Injectable()
 export class HttpService{
 
@@ -18,16 +22,18 @@ export class HttpService{
 
     get(resource: string, anonymous: boolean = false): Observable<Response>{
         
-        return this.authenticateAndRun(anonymous, (accessToken: string = null) => { 
-            var url = this.appConstants.BaseApiUrl + '/' + resource;
+        return this.authenticateAndCall(anonymous, 
+            (accessToken: string) => { 
+                var url = this.appConstants.BaseApiUrl + '/' + resource;
 
-            if (accessToken)
-                url = url + '?access-token=' + accessToken;
+                if (accessToken)
+                    url = url + '?access-token=' + accessToken;
 
-            var headers = new Headers();
-            headers.append('Content-Type', 'application/json');
-            return this.http.get(url,
-                { headers: headers }); 
+                var headers = new Headers();
+                headers.append('Content-Type', 'application/json');
+
+                return this.http.get(url,
+                    { headers: headers }); 
         });
     }
     
@@ -48,12 +54,14 @@ export class HttpService{
         
     }
 
-    private authenticateAndRun(anonymouse: boolean, callback): Observable<Response> {
-        if (anonymouse)
-            callback();
+    private authenticateAndCall(anonymouse: boolean, httpCall: HttpCall)
+        : Observable<Response> {
+        
+        if(anonymouse)
+            return httpCall('');
 
         return this.authService.getAccessToken().then(accessToken => {
-            callback(accessToken);
+            return httpCall(accessToken);
          });
     }
 }
