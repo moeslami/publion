@@ -22,7 +22,7 @@ export class HttpService{
 
     get(resource: string, anonymous: boolean = false): Observable<Response>{
         
-        return this.authenticateAndCall(anonymous, 
+        return this.execAuthenticated(anonymous, 
             (accessToken: string) => { 
                 var url = this.appConstants.BaseApiUrl + '/' + resource;
 
@@ -37,31 +37,72 @@ export class HttpService{
         });
     }
     
-    post(resource: string, data: any, anonymous: boolean = false) {
+    post(resource: string, data: any, anonymous: boolean = false): Observable<Response> {
+        return this.execAuthenticated(anonymous, 
+            (accessToken: string) => { 
+                var url = this.appConstants.BaseApiUrl + '/' + resource;
 
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        return this.http.post(this.appConstants.BaseApiUrl + '/' + resource,
-            JSON.stringify(data),
-            { headers: headers });
+                if (accessToken)
+                    url = url + '?access-token=' + accessToken;
+
+                var headers = new Headers();
+                headers.append('Content-Type', 'application/json');
+
+                return this.http.post(url,
+                    JSON.stringify(data),
+                    { headers: headers }); 
+        });
     }
     
-    put(resource: string, data: any, anonymous: boolean = false) {
-        
+    put(resource: string, data: any, anonymous: boolean = false) : Observable<Response>{
+        return this.execAuthenticated(anonymous, 
+            (accessToken: string) => { 
+                var url = this.appConstants.BaseApiUrl + '/' + resource;
+
+                if (accessToken)
+                    url = url + '?access-token=' + accessToken;
+
+                var headers = new Headers();
+                headers.append('Content-Type', 'application/json');
+
+                return this.http.put(url,
+                    JSON.stringify(data),
+                    { headers: headers }); 
+        });
     }
     
-    delete(resource: string, id: any, anonymous: boolean = false) {
-        
+    delete(resource: string, id: any, anonymous: boolean = false) :Observable<Response> {
+        return this.execAuthenticated(anonymous, 
+            (accessToken: string) => { 
+                var url = this.appConstants.BaseApiUrl + '/' + resource;
+
+                if (accessToken)
+                    url = url + '?access-token=' + accessToken;
+                
+                url = url + '?id=' + id;
+                
+                var headers = new Headers();
+                headers.append('Content-Type', 'application/json');
+
+                return this.http.delete(url,
+                    { headers: headers }); 
+        });
     }
 
-    private authenticateAndCall(anonymouse: boolean, httpCall: HttpCall)
-        : Observable<Response> {
+    private execAuthenticated(anonymouse: boolean, httpCall: HttpCall) : Observable<Response> {
         
         if(anonymouse)
-            return httpCall('');
-
-        return this.authService.getAccessToken().then(accessToken => {
-            return httpCall(accessToken);
-         });
+            return httpCall(null);
+        
+        return Observable.create(function(observer){
+            this.authService.getAccessToken().then(accessToken => {
+                httpCall(accessToken).subscribeOnNext(function(x){
+                        observer.onNext(x);
+                });
+            });
+            
+        });
+        
+        
     }
 }

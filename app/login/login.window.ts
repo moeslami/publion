@@ -17,7 +17,7 @@ export class LoginWindow implements ICustomModalComponent {
     // public accessToken: string;
     // public errorMsg: string;
 
-    constructor(private dialog: ModalDialogInstance, private http: HttpService) {
+    constructor(private dialog: ModalDialogInstance, private httpService: HttpService) {
         
     }
     

@@ -12,7 +12,6 @@ import {LoginWindow} from '../login/login.window'
 @Injectable()
 export class AuthService {
     
-    
     constructor(private modal: Modal, private elementRef: ElementRef,
                 private injector: Injector, private _renderer: Renderer) {}
     
@@ -28,10 +27,10 @@ export class AuthService {
             // user is not authenticated anymore
         
             this.promptForLogin().then(
-                (resultPromise) => {
-                    resultPromise.result.then((result) => {
-                        Cookie.setCookie('access-token', result)
-                        resolve(result);
+                (dialogPromise) => {
+                    dialogPromise.result.then((accessToken) => {
+                        Cookie.setCookie('access-token', accessToken)
+                        resolve(accessToken);
                     });
                 }, () => {
                     resolve(null);
