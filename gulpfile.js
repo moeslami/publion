@@ -52,6 +52,7 @@ gulp.task('copy-lib', function(){
     'node_modules/moment/min/moment.min.js',
     'node_modules/angular2/bundles/http.dev.js',
     'node_modules/ng2-cookies/ng2-cookies.js'
+    //'node_modules/angular2-modal/dist/systemjs/angular2-modal-0.1.0.min.js'
 
     //'js/*.js'
     ])

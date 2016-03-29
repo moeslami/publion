@@ -2,13 +2,15 @@ import {Component, Input} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {HttpService} from '../common/http.service';
 
-import {Modal, ModalDialogInstance, ICustomModal, ICustomModalComponent} from 'angular2-modal';
+import {Modal, ModalDialogInstance, ICustomModal, ICustomModalComponent} from 'angular2-modal/angular2-modal';
 
 @Component({
     selector: 'login-window',
     directives: [CORE_DIRECTIVES],
     templateUrl: 'login/login.window.html',
 })
+
+
 
 export class LoginWindow implements ICustomModalComponent {
     
@@ -17,10 +19,12 @@ export class LoginWindow implements ICustomModalComponent {
     // public accessToken: string;
     // public errorMsg: string;
 
-    constructor(private dialog: ModalDialogInstance, private httpService: HttpService) {
-        
+    constructor(dialog: ModalDialogInstance, private httpService: HttpService) {
+        this.dialog = dialog;
     }
     
+    dialog: ModalDialogInstance;
+
     login(){
 
 
@@ -30,22 +34,21 @@ export class LoginWindow implements ICustomModalComponent {
     }
     
     signup(){
-        this.http.post('users', false,)
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        this.http.post(this.appConstants.BaseApiUrl + '/users', JSON.stringify(user), {
-            headers: headers
-        })
+        debugger;
+        this.httpService.post('users', this.user, true)
             .map(res => <any>res.json())
             .subscribe(
-            data => console.log(data + ' is returned from the server'),
+            data => {
+                debugger;
+                console.log(data + ' is returned from the server')
+            },
             err => console.error(err),
             () => console.log('registration complete!')
             );
     }
     
     cancel(){
-        this.accessToken = '';
+        //this.accessToken = '';
         this.dialog.close();
     }
 
@@ -62,4 +65,11 @@ export class LoginWindow implements ICustomModalComponent {
     beforeClose(): boolean {
         return true;
     }
+
+    private user: User;
+}
+
+class User {
+    email: string;
+    password: string;
 }

@@ -93,16 +93,9 @@ export class HttpService{
         
         if(anonymouse)
             return httpCall(null);
-        
-        return Observable.create(function(observer){
+        return Observable.fromPromise(
             this.authService.getAccessToken().then(accessToken => {
-                httpCall(accessToken).subscribeOnNext(function(x){
-                        observer.onNext(x);
-                });
-            });
-            
-        });
-        
-        
+                return httpCall(accessToken).toPromise();            
+            }));
     }
 }
