@@ -1,5 +1,5 @@
 
-import {Cookie} from 'ng2-cookies';
+import { CookieService, CookieOptionsArgs } from 'angular2-cookie/core';
 
 import { Injectable, Component, provide, ElementRef, Injector,
     IterableDiffers, KeyValueDiffers, Renderer} from 'angular2/core';
@@ -13,23 +13,22 @@ import {LoginWindow} from '../login/login.window'
 export class AuthService {
     
     constructor(private modal: Modal, private elementRef: ElementRef,
-                private injector: Injector, private _renderer: Renderer) {}
+        private injector: Injector, private _renderer: Renderer, private cookieService: CookieService) { }
     
     getAccessToken() : Promise<string> {
 
         return new Promise<string>((resolve, reject) => {
 
-            var accessCookie = Cookie.getCookie('access-token');
+            var accessCookie = this.cookieService.get('access-token');
 
             if (!!accessCookie)
                 resolve(accessCookie);
 
             // user is not authenticated anymore
-        
             this.promptForLogin().then(
                 (dialogPromise) => {
                     dialogPromise.result.then((accessToken) => {
-                        Cookie.setCookie('access-token', accessToken)
+                        this.cookieService.put('access-token', accessToken);
                         resolve(accessToken);
                     });
                 }, () => {
