@@ -5,7 +5,8 @@ import {HttpService} from '../common/http.service'
 @Component({
     selector: 'home',
     templateUrl: 'home/home.component.html',
-    directives: [TopNavComponent]
+    directives: [TopNavComponent],
+    providers: [HttpService]
 })
 export class HomeComponent implements OnInit { 
 

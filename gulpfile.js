@@ -25,7 +25,7 @@ var tsResult = gulp.src('app/**/*.ts')
     base: '/app',          // Angular2 application base folder 
     html: true,         // Process .html files 
     css: true,          // Process .css files 
-    target: 'es6',       // Can swap to es5 
+    target: 'es5',       // Can swap to es5 
     indent: 2           // Indentation (spaces) 
   }))
 .pipe(ts(tsProject));
